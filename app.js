@@ -138,7 +138,7 @@ $("#link-form").on("submit", function (e) {
   const affiliateId = "17356260326";
 
   // Gọi API để tạo link
-  const apiUrl = `https://hoimagiamgia.com/?url=${encodeURIComponent(url)}&affiliate_id=${encodeURIComponent(affiliateId)}`;
+  const apiUrl = `https://api.hoimagiamgia.com/?url=${encodeURIComponent(url)}&affiliate_id=${encodeURIComponent(affiliateId)}`;
 
   $.ajax({
     url: apiUrl,
