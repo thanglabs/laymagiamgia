@@ -1,0 +1,480 @@
+:root {
+  --primary: #ee4d2d;
+  --secondary: #ff6b35;
+  --success: #26de81;
+  --info: #4b7bec;
+  --dark: #2f3542;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: linear-gradient(
+    135deg,
+    rgb(255, 190, 166) 0%,
+    rgb(255, 225, 219) 100%
+  );
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 650px;
+  padding: 1rem;
+}
+
+.header {
+  text-align: center;
+  padding: 1rem 0;
+  color: var(--primary);
+}
+
+.header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.domain-badge {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+.main-card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.card-content {
+  padding: 1.5rem 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+  font-size: 14px;
+}
+
+.form-control {
+  border: 2px solid #e9ecef;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.9375rem;
+  transition: all 0.3s;
+}
+
+.form-control:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 0.15rem rgba(238, 77, 45, 0.15);
+}
+
+.input-group-text {
+  background: white;
+  border: 2px solid #e9ecef;
+  border-left: none;
+  border-radius: 0 0.75rem 0.75rem 0;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.input-group-text:hover {
+  background: #f8f9fa;
+}
+
+.btn-custom {
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  border: none;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-custom:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 0.5s;
+}
+
+.btn-custom:hover:before {
+  left: 100%;
+}
+
+.btn-primary-custom {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+}
+
+.btn-primary-custom:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(238, 77, 45, 0.4);
+}
+
+.btn-success-custom {
+  background: linear-gradient(135deg, var(--success), #20bf6b);
+  color: white;
+}
+
+.btn-info-custom {
+  background: linear-gradient(135deg, var(--info), #3867d6);
+  color: white;
+}
+
+.result-section {
+  display: none;
+  background: #f8f9fa;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.result-section.show {
+  display: block;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.link-box {
+  background: white;
+  border: 2px solid var(--primary);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  word-break: break-all;
+  font-size: 0.875rem;
+  color: #495057;
+  margin-bottom: 1rem;
+}
+
+.link-box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.copy-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.copy-btn:hover {
+  background: var(--secondary);
+  transform: scale(1.05);
+}
+
+.action-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.action-buttons .btn-custom {
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+}
+
+.spinner {
+  display: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-left: 0.5rem;
+}
+
+.spinner.show {
+  display: inline-block;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.info-alert {
+  background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+  border: none;
+  border-left: 4px solid var(--info);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.info-alert h6 {
+  color: var(--info);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.share-link-box {
+  background: white;
+  border-radius: 0.5rem;
+  padding: 10px;
+  margin-top: 0.5rem;
+}
+
+.share-link-box input {
+  border: 1px solid #dee2e6;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.8125rem;
+}
+
+.no-config-alert {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.footer-links {
+  text-align: center;
+  padding: 1rem;
+  color: white;
+  font-size: 0.8125rem;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  margin: 0 0.5rem;
+  opacity: 0.9;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.instructions-box {
+  margin-top: 1rem;
+  background: #f5f5f5;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.instructions-box h6 {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.instructions-box ol {
+  padding-left: 1.5rem;
+}
+
+.instructions-box .instructions-content {
+  margin-top: 0.5rem;
+}
+
+.instructions-box .instructions-link {
+  text-align: left;
+}
+
+.instructions-box .instructions-image {
+  max-width: 100%;
+  margin-top: 8px;
+  border-radius: 5px;
+}
+
+.instructions-box .custom-instructions-text {
+  margin-bottom: 0.5rem;
+}
+
+.custom-content-box {
+  margin-top: 1rem;
+  background: #f5f5f5;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.custom-content-box .custom-content-inner {
+  margin-top: 0.5rem;
+}
+
+.custom-content-box .custom-content-text {
+  margin-bottom: 0.5rem;
+}
+
+.custom-content-box .custom-content-image {
+  margin-top: 0.5rem;
+}
+
+.custom-content-box .custom-content-image img {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.product-info-box {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 0.75rem;
+  margin-top: 1rem;
+  display: none;
+}
+
+.product-info-box.show {
+  display: block;
+  animation: slideIn 0.3s ease;
+}
+
+.product-info-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.product-info-header h6 {
+  margin: 0;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.product-image {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  border: 2px solid #dee2e6;
+  margin-right: 1rem;
+}
+
+.product-details {
+  flex: 1;
+}
+
+.product-name {
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.3;
+}
+
+.product-shop {
+  color: #6c757d;
+  font-size: 0.8125rem;
+  margin-bottom: 0.25rem;
+}
+
+.product-price {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.product-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.stat-item {
+  background: white;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  border: 1px solid #dee2e6;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #6c757d;
+  margin-bottom: 0.25rem;
+}
+
+.stat-value {
+  font-weight: 700;
+  color: var(--dark);
+  font-size: 0.9375rem;
+}
+
+.commission-badge {
+  background: linear-gradient(135deg, var(--success), #20bf6b);
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.commission-badge .label {
+  font-size: 0.8125rem;
+  opacity: 0.9;
+  margin-bottom: 0.25rem;
+}
+
+.commission-badge .amount {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+@media (max-width: 576px) {
+  .header h1 {
+    font-size: 1.25rem;
+  }
+
+  .card-content {
+    padding: 0.5rem 0.5rem;
+  }
+
+  .action-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .result-section {
+    padding: 0.5rem;
+  }
+
+  .link-box {
+    padding: 0.5rem;
+  }
+
+  .link-box-header {
+    margin-bottom: 0.25rem;
+  }
+}
