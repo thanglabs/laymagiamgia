@@ -135,7 +135,19 @@ $("#link-form").on("submit", function (e) {
   $("#product-info-box").removeClass("show");
 
   // Lấy affiliate ID ngẫu nhiên từ server
-  const affiliateId = "17359460494";
+  const pathMatch = window.location.pathname.match(/^\/([^/]+)\/?$/);
+  const params = new URLSearchParams(window.location.search);
+  const queryId = params.get("p");
+  const path = window.location.pathname.replace(/^\/+/, "").replace(/\/+$/, "");
+  const specialAffiliateIds = {
+    "sandeal0dong.html": "17329990336",
+    sandeal0dong: "17329990336",
+  };
+  const mappedId = specialAffiliateIds[path];
+  if (!pathMatch && queryId && window.location.pathname === "/") {
+    history.replaceState(null, "", `/${queryId}`);
+  }
+  const affiliateId = mappedId || (pathMatch ? pathMatch[1] : queryId || "17359460494");
 
   // Gọi API để tạo link
   const apiUrl = `https://api.hoimagiamgia.com/?url=${encodeURIComponent(url)}&affiliate_id=${encodeURIComponent(affiliateId)}`;
